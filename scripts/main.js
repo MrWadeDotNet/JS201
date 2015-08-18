@@ -16,10 +16,10 @@ requirejs.config({
 
 
 requirejs(
-        ["jquery","hbs"],
-        function($, Handlebars) {
+        ["jquery","hbs","firebase","display"],
+        function($, Handlebars, _firebase,displayToPage) {
 
-
+// On Submit Push to Firebase 
 $("#submit").on("click", function() {
 
 var name = $("#name").val();
@@ -47,9 +47,24 @@ $(document).ready(function() {
     });
 });
 
+// Display to page
+var myFirebaseRef = new Firebase("https://nss-lewis-family.firebaseio.com/");
+    myFirebaseRef.child("family").on("value", function(snapshot) {
+      console.log(snapshot.val());
+      var family = snapshot.val();
+      var allFamily = [];
+      // Convert Firebase's object of objects into an array of objects
+      for (var key in family) {
+        allFamily[allFamily.length] = family[key];
+      }
+      allFamilyObj = {
+        family: allFamily
+      };
 
+      displayToPage(family);
 
-
+    });
+//End Display
 
 
 });
