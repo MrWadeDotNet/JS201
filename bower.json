@@ -1,0 +1,16 @@
+{
+  "name": "JS201",
+  "version": "0.0.0",
+  "homepage": "https://github.com/alwadejr/JS201",
+  "authors": [
+    "Lewis Wade <lewis@mrwade.net>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
