@@ -16,8 +16,8 @@ requirejs.config({
 
 
 requirejs(
-        ["jquery","hbs","firebase","display"],
-        function($, Handlebars, _firebase,displayToPage) {
+        ["jquery","hbs","firebase","display","remove"],
+        function($, Handlebars, _firebase,displayToPage,deleteFamily) {
 
 // On Submit Push to Firebase 
 $("#submit").on("click", function() {
@@ -63,9 +63,17 @@ var myFirebaseRef = new Firebase("https://nss-lewis-family.firebaseio.com/");
 
       displayToPage(family);
 
+
     });
 //End Display
 
+//Delete Family member
+    $(".display_family").on("click", '.delete', function() {
+      var datakey = ($(this).parent().attr('data-key'));
+      console.log(datakey); 
+      deleteFamily(datakey);
+    });
+//End delete Family member
 
 });
 
